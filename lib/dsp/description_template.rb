@@ -17,7 +17,7 @@ WHERE {
 }
 EOF
       statement_templates = SPARQL.execute(sparql, Spira.repository(:default)).map do |solution|
-        ::DSP::DescriptionTemplate.for(RDF::URI.new(solution.statement_template_uri))
+        ::DSP::StatementTemplate.for(RDF::URI.new(solution.statement_template_uri))
       end
       return statement_templates
     end
