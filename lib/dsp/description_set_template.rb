@@ -35,5 +35,9 @@ WHERE {
       return namespaces
     end
 
+    def uri
+      return @subject
+    end
+
   end
 end

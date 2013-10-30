@@ -89,6 +89,10 @@ module DSP
       end
     end
 
+    def uri
+      return @subject
+    end
+
     #define_type RDF::DSP.StatementTemplate
     #has_subject :description_template, RDF::RDFS.subClassOf, 'DSP::DescriptionTemplate'
   end

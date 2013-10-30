@@ -25,5 +25,9 @@ EOF
       return statement_templates
     end
 
+    def uri
+      return @subject
+    end
+
   end
 end
