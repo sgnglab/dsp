@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module DSP
   class DescriptionTemplate < Spira::Base
 
@@ -13,10 +14,13 @@ module DSP
       sparql =<<-EOF
 SELECT distinct ?statement_template_uri
 WHERE {
-  ?statement_template_uri a <http://purl.org/metainfo/terms/dsp#StatementTemplate> .
+  <#{self.subject.to_s}> <#{RDF::RDFS.subClassOf.to_s}> ?statement_template_uri.
 }
 EOF
-      statement_templates = SPARQL.execute(sparql, Spira.repository(:default)).map do |solution|
+      # rdfs:subClassOfの先が自分自身でないとき、statement_templatesに加える
+      statement_templates = SPARQL.execute(sparql, Spira.repository(:default)).reject do |solution| 
+        solution.statement_template_uri.to_s == self.subject.to_s 
+      end.map do |solution|
         ::DSP::StatementTemplate.for(RDF::URI.new(solution.statement_template_uri))
       end
       return statement_templates
