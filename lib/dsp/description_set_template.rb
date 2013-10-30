@@ -34,5 +34,6 @@ WHERE {
       end
       return namespaces
     end
+
   end
 end

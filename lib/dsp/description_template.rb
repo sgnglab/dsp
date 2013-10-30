@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 module DSP
   class DescriptionTemplate < Spira::Base
-
     include Spira::Resource
     #has_many :statement_templates, :predicate => RDF::RDFS.subClassOf, :type => "DSP::StatementTemplate"
     property :label, :predicate => RDF::RDFS.label, :type => String
@@ -25,5 +24,6 @@ EOF
       end
       return statement_templates
     end
+
   end
 end
